@@ -47,7 +47,7 @@ class Solution {
             {
                 if (check_num_have[i] == 2)
                 {
-                    /* code */
+                    
                 }
                 
             }
