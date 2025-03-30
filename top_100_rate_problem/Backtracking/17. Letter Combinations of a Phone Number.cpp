@@ -41,7 +41,7 @@ class Solution {
                     check_num.have.append(9);
                 }
             }
-            // go output letter from num
+            // creat result from num
             int count = check_num_have.size();
             for (int i = 0; i < count; i++)
             {
@@ -49,7 +49,10 @@ class Solution {
                 {
                     
                 }
-                
+                else if (check_num_have[i] == 3)
+                {
+                    
+                }
             }
             
         }
