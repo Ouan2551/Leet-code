@@ -9,8 +9,8 @@ class Solution {
 
             }
             // call function binary search
-            int n = nums.size()/ 
-            int result = binarysearch(nums, 0, )
+            int n = nums.size();
+            int result = binarysearch(nums, 0, n, )
             return result;
         }
     };
