@@ -1,9 +1,40 @@
 #include <bits/stdc++.h>
 using namespace std;
-int main()
+
+// An iterative binary search function.
+int binarySearch(int arr[], int low, int high, int x)
 {
-    ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-    char two[3] = {'a', 'b', 'c'}, three[3] = {'d', 'e', 'f'}, four[3] = {'g', 'h', 'i'}, five[3] = {'j', 'k', 'l'},
-    six[3] = {'m', 'n', 'o'}, seven[4] = {'p', 'q', 'r', 's'}, eight[3] = {'t', 'u', 'v'}, nine[4] = {'w', 'x', 'y', 'z'};
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+
+        // Check if x is present at mid
+        if (arr[mid] == x)
+            return mid;
+
+        // If x greater, ignore left half
+        if (arr[mid] < x)
+            low = mid + 1;
+
+        // If x is smaller, ignore right half
+        else
+            high = mid - 1;
+    }
+
+    // If we reach here, then element was not present
+    return -1;
+}
+
+// Driver code
+int main(void)
+{
+    int arr[] = { 2, 3, 4, 10, 40 };
+    int x = 10;
+    int n = sizeof(arr) / sizeof(arr[0]);
+    cout << "size of arr : " << sizeof(arr) << '\n';
+    cout << "size of arr[0] : " << sizeof(arr[0]) << '\n';
+    cout << "arr[0] : " << arr[0] << '\n';
+    int result = binarySearch(arr, 0, n - 1, x);
+    if(result == -1) cout << "Element is not present in array";
+    else cout << "Element is present at index " << result;
     return 0;
 }
