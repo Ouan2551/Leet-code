@@ -3,20 +3,25 @@ using namespace std;
 class Solution {
     public:
         int searchInsert(vector<int>& nums, int target) {
-            // function binary search
-            int binarysearch(vector<int> nums, int low, int high, int target)
+            int n = nums.size(), low = 0; int high = n;
+            // binary search
+            while (low <= high)
             {
-                while (low <= high)
+                int mid = low + (high - low) / 2;
+                if (nums[mid] == target)
                 {
-                    int mid = low + (high - low) / 2;
-                    
+                    return mid;
                 }
-                
+                else if (nums[mid] > target)
+                {
+                    high = mid - 1;
+                }
+                else if (nums[mid] < target)
+                {
+                    low = mid + 1;
+                }
             }
-            // call function binary search
-            int n = nums.size();
-            int result = binarysearch(nums, 0, n, target);
-            return result;
+            return low;
         }
     };
 int main()
