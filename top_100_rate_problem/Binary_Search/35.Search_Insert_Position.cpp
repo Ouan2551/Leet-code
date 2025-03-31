@@ -6,11 +6,16 @@ class Solution {
             // function binary search
             int binarysearch(vector<int> nums, int low, int high, int target)
             {
-
+                while (low <= high)
+                {
+                    int mid = low + (high - low) / 2;
+                    
+                }
+                
             }
             // call function binary search
             int n = nums.size();
-            int result = binarysearch(nums, 0, n, )
+            int result = binarysearch(nums, 0, n, target);
             return result;
         }
     };

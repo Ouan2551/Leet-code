@@ -5,7 +5,20 @@ using namespace std;
 int binarySearch(int arr[], int low, int high, int x)
 {
     while (low <= high) {
+        // use low <= high because
+        // low is start index to find
+        // high is end index to find
         int mid = low + (high - low) / 2;
+        // use this formula to find middle index because
+        // this is original formula mid = (low + high)/2
+
+
+        // example mid index
+        // 0 + (4 - 0) / 2 (first loop)
+        // but this problem 4 < 10
+        // then low = mid + 1 = 2 + 1 = 3
+        // low value change then search area change
+        // new value mid = 3 + (4 - 3) / 2 = 3 + 0 = 3
 
         // Check if x is present at mid
         if (arr[mid] == x)
