@@ -3,7 +3,8 @@ using namespace std;
 class Solution {
     public:
         int searchInsert(vector<int>& nums, int target) {
-            int n = nums.size(), low = 0; int high = n;
+            int n = nums.size(), low = 0, high = n - 1;
+            // warning high != n (nums.size()) because it is index not size array
             // binary search
             while (low <= high)
             {
@@ -24,6 +25,7 @@ class Solution {
             return low;
         }
     };
+
 int main()
 {
     ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
