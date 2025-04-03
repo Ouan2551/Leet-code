@@ -5,15 +5,29 @@ class Solution {
     public:
         int longestConsecutive(vector<int>& nums) {
             sort(nums.begin(), nums.end()); int count = nums.size() - 1;
+            vector<int> length; int long_value = 1, longest = INT_MIN;
             for (int i = 0; i < count; i++)
             {
-                if ()
+                int num = nums[i];
+                for (int j = 0; j < count; j++)
                 {
-                    /* code */
+                    if (num == nums[j])
+                    {
+                        continue;
+                    }
+                    else if (nums[j] != num && nums[j] > num && nums[j] - num == 1)
+                    {
+                        long_value++; num = nums[j];
+                    }
                 }
-                
+                length.push_back(long_value); long_value = 1;
             }
-            
+            count = length.size();
+            for (int i = 0; i < count; i++)
+            {
+                longest = max(longest, length[i]);
+            }
+            return longest;
         }
     };
 
