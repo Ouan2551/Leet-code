@@ -14,7 +14,7 @@ class Solution {
                     {
                         break;
                     }
-                    else if (nums[j] != num && nums[j] - num == 1)
+                    else if (nums[j] != num && nums[j] > num && nums[j] - num == 1)
                     {
                         long_value++; num = nums[j];
                     }
