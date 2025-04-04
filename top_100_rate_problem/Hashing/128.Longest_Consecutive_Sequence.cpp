@@ -8,17 +8,13 @@ class Solution {
             for (int i = 0; i < count; i++)
             {
                 int num = nums[i];
-                for (int j = 0; j < count; j++)
+                for (int j = i + 1; j < count; j++)
                 {
-                    if (i == j)
-                    {
-                        continue;
-                    }
-                    else if (num == nums[j])
+                    if (num == nums[j])
                     {
                         break;
                     }
-                    else if (nums[j] != num && nums[j] > num && nums[j] - num == 1)
+                    else if (nums[j] != num && nums[j] - num == 1)
                     {
                         long_value++; num = nums[j];
                     }
