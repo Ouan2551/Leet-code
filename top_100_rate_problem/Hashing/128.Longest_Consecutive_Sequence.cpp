@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-// this solution sort vector
 class Solution {
     public:
         int longestConsecutive(vector<int>& nums) {
@@ -11,9 +10,13 @@ class Solution {
                 int num = nums[i];
                 for (int j = 0; j < count; j++)
                 {
-                    if (num == nums[j])
+                    if (i == j)
                     {
                         continue;
+                    }
+                    else if (num == nums[j])
+                    {
+                        break;
                     }
                     else if (nums[j] != num && nums[j] > num && nums[j] - num == 1)
                     {
