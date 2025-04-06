@@ -3,32 +3,68 @@ using namespace std;
 class Solution {
     public:
         int longestConsecutive(vector<int>& nums) {
-            sort(nums.begin(), nums.end()); int count = nums.size() - 1;
-            vector<int> length; int long_value = 1, longest = INT_MIN;
-            for (int i = 0; i < count; i++)
+            if (nums.empty() == true)
             {
-                int num = nums[i];
-                for (int j = i + 1; j < count; j++)
-                {
-                    if (num == nums[j])
-                    {
-                        break;
-                    }
-                    else if (nums[j] != num && nums[j] > num && nums[j] - num == 1)
-                    {
-                        long_value++; num = nums[j];
-                    }
-                }
-                length.push_back(long_value); long_value = 1;
+                return 0;
             }
-            count = length.size();
-            for (int i = 0; i < count; i++)
+            if (nums.size() == 1)
             {
-                longest = max(longest, length[i]);
+                return 1;
+            }
+            // input all nums into numset unordered_set
+            unordered_set<int> numSet(nums.begin(), nums.end());
+            int longest = 0;
+            for (int num : numSet) {
+                // Check if it's the start of a sequence or not
+                if (numSet.find(num - 1) == numSet.end()) // .find() use for find num in unordered_set
+                // numSet.end() mean not found
+                {
+                    int currentNum = num;
+                    int currentStreak = 1;
+    
+                    // Count the sequence length
+                    // and check it have num in .find() that not equal value "not found"
+                    while (numSet.find(currentNum + 1) != numSet.end()) {
+                        currentNum++;
+                        currentStreak++;
+                    }
+                    longest = max(longest, currentStreak);
+                }
             }
             return longest;
         }
     };
+
+// this solution slow code
+// class Solution {
+//     public:
+//         int longestConsecutive(vector<int>& nums) {
+//             sort(nums.begin(), nums.end()); int count = nums.size() - 1;
+//             vector<int> length; int long_value = 1, longest = INT_MIN;
+//             for (int i = 0; i < count; i++)
+//             {
+//                 int num = nums[i];
+//                 for (int j = i + 1; j < count; j++)
+//                 {
+//                     if (num == nums[j])
+//                     {
+//                         break;
+//                     }
+//                     else if (nums[j] != num && nums[j] > num && nums[j] - num == 1)
+//                     {
+//                         long_value++; num = nums[j];
+//                     }
+//                 }
+//                 length.push_back(long_value); long_value = 1;
+//             }
+//             count = length.size();
+//             for (int i = 0; i < count; i++)
+//             {
+//                 longest = max(longest, length[i]);
+//             }
+//             return longest;
+//         }
+//     };
 
 // this solution not sort code
 // class Solution {

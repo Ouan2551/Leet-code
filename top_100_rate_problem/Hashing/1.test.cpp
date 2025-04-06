@@ -17,7 +17,8 @@ public:
         int longest = 0;
         for (int num : numSet) {
             // Check if it's the start of a sequence
-            if (numSet.find(num - 1) == numSet.end())
+            if (numSet.find(num - 1) == numSet.end()) // .find() use for find num in unordered_set
+            // numSet.end() mean not found
             {
                 int currentNum = num;
                 int currentStreak = 1;
