@@ -21,7 +21,7 @@ class Solution {
                 }
                 else if (m == word1.size() && n <= word2.size())
                 {
-                    result += word2[m]; n++;
+                    result += word2[n]; n++;
                 }
             }
             return result;
