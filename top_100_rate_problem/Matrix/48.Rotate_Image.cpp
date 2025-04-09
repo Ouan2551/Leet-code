@@ -20,7 +20,7 @@ class Solution {
                 for (int column = row + 1; column < length; column++)
                 {
                     int temp = matrix[row][column];
-                    matrix[row][column] = matrix[column][column];
+                    matrix[row][column] = matrix[column][row];
                     matrix[column][row] = temp;
                 }
             }
