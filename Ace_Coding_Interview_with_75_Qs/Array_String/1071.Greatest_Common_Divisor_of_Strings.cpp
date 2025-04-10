@@ -64,7 +64,7 @@ int main()
 {
     ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
     Solution solution1;
-    string result = solution1.gcdOfStrings("ABABAB", "ABAB");
+    string result = solution1.gcdOfStrings("ABCDEF", "ABC");
     cout << result;
     return 0;
 }
