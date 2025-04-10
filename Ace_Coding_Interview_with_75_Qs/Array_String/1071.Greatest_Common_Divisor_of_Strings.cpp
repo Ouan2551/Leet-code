@@ -18,6 +18,24 @@ string find_common_string(string str_low, string str_high, int count)
     }
     return result;
 }
+string check_short_answer(string text)
+{
+    string result = ""; int count = text.size();
+    for (int i = 1; i <= count; i++)
+    {
+        string check = text.substr(0, i);
+        int time = count/i; result = "";
+        for (int j = 0; j < time; j++)
+        {
+            result += check;
+        }
+        if (result == text)
+        {
+            return check;
+        }
+    }
+    return text;
+}
 class Solution {
     public:
         string gcdOfStrings(string str1, string str2) {
@@ -30,11 +48,13 @@ class Solution {
             {
                 cout << 1;
                 int count = size1; string result = find_common_string(str1, str2, count);
+                result = check_short_answer(result);
                 return result;
             }
             else if (size2 < size1)
             {
                 int count = size2; string result = find_common_string(str2, str1, count);
+                result = check_short_answer(result);
                 return result;
             }
             return result;
