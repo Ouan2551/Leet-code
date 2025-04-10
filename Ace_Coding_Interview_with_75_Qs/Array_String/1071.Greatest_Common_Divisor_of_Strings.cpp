@@ -3,37 +3,7 @@ using namespace std;
 class Solution {
     public:
         string gcdOfStrings(string str1, string str2) {
-            int size1 = str1.size(), size2 = str2.size(); string result = "";
-            if (str1 == str2)
-            {
-                return result;
-            }
-            else
-            {
-                for (int i = 0; i < size1; i++)
-                {
-                    for (int j = 0; j < size2; j++)
-                    {
-                        if (str1[i] == str2[j])
-                        {
-                            result += str1[i];
-                            int d1 = i+1, d2 = j+1;
-                            while (d1 < str1.size() && d2 < str2.size() && str1[d1] == str2[d2])
-                            {
-                                result += str1[d1]; d1++; d2++;
-                            }
-                            if (result.size() == 1)
-                            {
-                                return result = "";
-                            }
-                            // find shortest result
-                            
-                            return result;
-                        }
-                    }
-                }
-            }
-            return result;
+            
         }
     };
 int main()
