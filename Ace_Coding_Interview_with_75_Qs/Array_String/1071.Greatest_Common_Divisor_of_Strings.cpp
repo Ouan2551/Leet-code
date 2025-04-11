@@ -1,70 +1,35 @@
 #include <bits/stdc++.h>
 using namespace std;
-string find_common_string(string str_low, string str_high, int count)
+int gcd_find(int str1_size, int str2_size)
 {
-    string result = "";
-    for (int i = 1; i <= count; i++)
+    int value = min(str1_size, str2_size);
+    for (int i = value; i > 0; i--)
     {
-        string check = str_low.substr(0, i);
-        int time = count/i; result = "";
-        for (int j = 0; j < time; j++)
+        if ((str1_size % i == 0) && (str2_size % i == 0))
         {
-            result += check;
-        }
-        if (result == str_high)
-        {
-            return check;
+            return i;
         }
     }
-    return result;
-}
-string check_short_answer(string text)
-{
-    string result = ""; int count = text.size();
-    for (int i = 1; i <= count; i++)
-    {
-        string check = text.substr(0, i);
-        int time = count/i; result = "";
-        for (int j = 0; j < time; j++)
-        {
-            result += check;
-        }
-        if (result == text)
-        {
-            return check;
-        }
-    }
-    return text;
+    return 1; // return 1 because 1 can divide all num
+    // never skip math lesson bro
 }
 class Solution {
     public:
         string gcdOfStrings(string str1, string str2) {
-            int size1 = str1.size(), size2 = str2.size(); string result = "";
-            if (size1 == size2 && ((str1 != str2) || (str1 == str2)))
+            string result = "";
+            if (str1 + str2 != str2 + str1)
             {
                 return result;
             }
-            else if (size1 < size2)
-            {
-                cout << 1;
-                int count = size1; string result = find_common_string(str1, str2, count);
-                result = check_short_answer(result);
-                return result;
-            }
-            else if (size2 < size1)
-            {
-                int count = size2; string result = find_common_string(str2, str1, count);
-                result = check_short_answer(result);
-                return result;
-            }
-            return result;
+            int length = gcd_find(str1.size(), str2.size());
+            return str1.substr(0, length);
         }
     };
 int main()
 {
     ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
     Solution solution1;
-    string result = solution1.gcdOfStrings("ABCDEF", "ABC");
+    string result = solution1.gcdOfStrings("ABCABC", "ABC");
     cout << result;
     return 0;
 }
