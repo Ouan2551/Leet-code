@@ -3,24 +3,17 @@ using namespace std;
 class Solution {
     public:
         vector<vector<string>> groupAnagrams(vector<string>& strs) {
-            int count_strs = strs.size(); vector<vector<string>> result;
-            vector<int> copy_strs; vector<int> check_copy_strs;
-            for (int i = 0; i < count_strs; i++)
+            unordered_map<string, vector<string>> ans;
+            for (string& word : strs)
             {
-                copy_strs.push_back(strs[i]);
-                sort(copy_strs.begin(), copy_strs.end());
+                string key = word;
+                sort(key.begin(), key.end());
+                ans[key].push_back(word);
             }
-            for (int i = 0; i < count_strs; i++)
+            vector<vector<int>> result;
+            for (auto& value : ans)
             {
-                int count_check_copy = check_copy_strs.size();
-                for (int j = 0; j < count_check_copy; j++)
-                {
-                    if (copy_strs[i] == check_copy_strs[j])
-                    {
-                        break;
-                    }
-                    check_copy_strs.push_back(copy_strs[i]);
-                }
+                result.push_back(value.second);
             }
             return result;
         }
