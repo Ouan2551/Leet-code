@@ -4,12 +4,16 @@ class Solution {
     public:
         int subarraySum(vector<int>& nums, int k) {
             int count = 0, size = nums.size();
-            vector<int> pass_nums;
+            vector<vector<int>> pass_nums;
             for (int i = 0; i < size; i++)
             {
                 for (int j = 0; j < size; j++)
                 {
-                    /* code */
+                    if (nums[i] + nums[j] == k)
+                    {
+                        count += 2;
+                    }
+                    
                 }
                 
             }
