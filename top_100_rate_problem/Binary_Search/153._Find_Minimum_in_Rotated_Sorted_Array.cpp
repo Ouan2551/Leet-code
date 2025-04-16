@@ -2,13 +2,39 @@
 using namespace std;
 class Solution {
     public:
-        int findMin(vector<int>& nums) {
-            int count = nums.size(), min_num = INT_MAX;
-            for (int i = 0; i < count; i++)
+        int search(vector<int>& nums, int target) {
+            int low = 0, high = nums.size() - 1;
+            while (low <= high)
             {
-                min_num = min(nums[i], min_num);
+                int mid = low + ((high - low)/2) ;
+                if (nums[mid] == target)
+                {
+                    return mid;
+                }
+                else if (nums[mid] >= nums[low])
+                {
+                    if (target >= nums[low] && target <= nums[mid])
+                    {
+                        high = mid - 1;
+                    }
+                    else
+                    {
+                        low = mid + 1;
+                    }
+                }
+                else
+                {
+                    if (target <= nums[high] && target >= nums[mid])
+                    {
+                        low = mid + 1;
+                    }
+                    else
+                    {
+                        high = mid - 1;
+                    }
+                }
             }
-            return min_num;
+            return -1;
         }
     };
 int main()
