@@ -3,21 +3,17 @@ using namespace std;
 class Solution {
     public:
         int subarraySum(vector<int>& nums, int k) {
-            int count = 0, size = nums.size();
-            vector<vector<int>> pass_nums;
-            for (int i = 0; i < size; i++)
+            unordered_map<int, int> sub_nums;
+            sub_nums[0] = 1; int total = 0, count = 0;
+            for (int i : nums)
             {
-                for (int j = 0; j < size; j++)
+                total += i;
+                if (sub_nums.find(total - k) != sub_nums.end())
                 {
-                    if (nums[i] + nums[j] == k)
-                    {
-                        count += 2;
-                    }
-                    
+                    count += sub_nums[total - k];
                 }
-                
+                sub_nums[total]++;
             }
-            
             return count;
         }
     };
