@@ -22,8 +22,8 @@ int main()
 {
     ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
     vector<vector<int>> matrix = {{1,2,3}, {4,5,6}, {7,8,9}};
-    vector<int> result;
     Solution solution1;
+    vector<int> result;
     result = solution1.spiralOrder(matrix);
     int size = result.size();
     for (int i = 0; i < size; i++)
