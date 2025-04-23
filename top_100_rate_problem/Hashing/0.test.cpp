@@ -2,47 +2,31 @@
 using namespace std;
 class Solution {
     public:
-        int search(vector<int>& nums, int target) {
-            int low = 0, high = nums.size() - 1;
-            while (low <= high)
+        void rotate(vector<vector<int>>& matrix) {
+            int rows = matrix.size(), columns = matrix[0].size(), low = 0, high = rows - 1;
+            while (low < high)
             {
-                int mid = low + ((high - low)/2) ;
-                if (nums[mid] == target)
+                for (int i = 0; i < columns; i++)
                 {
-                    return mid;
+                    int temp = matrix[low][i];
+                    matrix[low][i] = matrix[high][i];
+                    matrix[high][i] = temp;
                 }
-                else if (nums[mid] >= nums[low])
+                low++; high--;
+            }
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = i + 1; j < columns; j++)
                 {
-                    if (target >= nums[low] && target <= nums[mid])
-                    {
-                        high = mid - 1;
-                    }
-                    else
-                    {
-                        low = mid + 1;
-                    }
-                }
-                else
-                {
-                    if (target <= nums[high] && target >= nums[mid])
-                    {
-                        low = mid + 1;
-                    }
-                    else
-                    {
-                        high = mid - 1;
-                    }
+                    int temp = matrix[i][j];
+                    matrix[i][j] = matrix[j][i];
+                    matrix[j][i] = temp;
                 }
             }
-            return -1;
         }
     };
 int main()
 {
     ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-    Solution solution1;
-    vector<int> nums = {4,5,6,7,0,1,2};
-    int result = solution1.search(nums, 0);
-    cout << result;
     return 0;
 }
