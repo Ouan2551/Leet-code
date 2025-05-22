@@ -5,9 +5,10 @@ class Solution {
         vector<int> topKFrequent(vector<int>& nums, int k) {
             int count = nums.size(); vector<int> result;
             unordered_map<int, int> check_count;
+            priority_queue<p,
             for (int i = 0; i < count; i++)
             {
-                check_count[nums[i]] += 1;
+                check_count[nums[i]]++;
             }
             
         }
